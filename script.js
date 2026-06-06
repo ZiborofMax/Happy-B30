@@ -8,7 +8,6 @@ const timerParts = {
 };
 
 const eventStatus = document.getElementById("eventStatus");
-const portraitImage = document.getElementById("portraitImage");
 const zoomLink = document.getElementById("zoomLink");
 const copyZoomButton = document.getElementById("copyZoomButton");
 const copyFeedback = document.getElementById("copyFeedback");
@@ -19,27 +18,6 @@ const confettiContext = confettiCanvas.getContext("2d");
 const targetTime = new Date(EVENT_TIME_UTC).getTime();
 let confettiPieces = [];
 let confettiAnimation = null;
-
-async function loadPublicPhoto() {
-  const publicPhoto = portraitImage?.dataset.publicPhoto;
-
-  if (!publicPhoto) {
-    return;
-  }
-
-  try {
-    const response = await fetch(
-      `https://cloud-api.yandex.net/v1/disk/public/resources/download?public_key=${encodeURIComponent(publicPhoto)}`,
-    );
-    const data = await response.json();
-
-    if (data.href) {
-      portraitImage.src = data.href.replace("disposition=attachment", "disposition=inline");
-    }
-  } catch {
-    // The local image remains as a fallback for offline preview.
-  }
-}
 
 function pad(value) {
   return String(value).padStart(2, "0");
@@ -200,7 +178,6 @@ zoomLink.addEventListener("click", (event) => {
 window.addEventListener("resize", resizeConfettiCanvas);
 
 setupZoom();
-loadPublicPhoto();
 resizeConfettiCanvas();
 updateTimer();
 startMusic();
