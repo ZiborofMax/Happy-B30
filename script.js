@@ -34,7 +34,7 @@ async function loadPublicPhoto() {
     const data = await response.json();
 
     if (data.href) {
-      portraitImage.src = data.href;
+      portraitImage.src = data.href.replace("disposition=attachment", "disposition=inline");
     }
   } catch {
     // The local image remains as a fallback for offline preview.
