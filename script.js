@@ -106,9 +106,8 @@ function resizeConfettiCanvas() {
   confettiContext.setTransform(scale, 0, 0, scale, 0, 0);
 }
 
-function fireConfetti() {
+function fireConfetti(count = 130) {
   const colors = ["#1877d6", "#ffd84a", "#0f9b9d", "#ff7b54", "#fff8dc"];
-  const count = 130;
 
   confettiPieces = Array.from({ length: count }, () => ({
     x: window.innerWidth / 2 + (Math.random() - 0.5) * 140,
@@ -164,8 +163,7 @@ function launchIntroConfetti() {
     return;
   }
 
-  setTimeout(fireConfetti, 520);
-  setTimeout(fireConfetti, 980);
+  setTimeout(() => fireConfetti(170), 560);
 }
 
 copyZoomButton.addEventListener("click", () => {
