@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Юбилей 30 лет</title>
+  <meta name="description" content="Приглашение на празднование юбилея 30 лет в Zoom.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <main class="page-shell">
+    <section class="invite" aria-labelledby="pageTitle">
+      <div class="portrait-wrap">
+        <img
+          class="portrait"
+          src="./my-photo-web.jpg"
+          alt="Портрет именинника"
+        >
+      </div>
+
+      <div class="content">
+        <p class="kicker">Сегодня в 19:45 по Москве</p>
+        <h1 id="pageTitle">Собираемся отпраздновать мои 30</h1>
+        <p class="lead">
+          Родные, буду очень рад увидеть вас вечером в Zoom. Наливайте чай, берите что-нибудь вкусное
+          и подключайтесь к маленькому семейному празднику.
+        </p>
+
+        <div class="timer" aria-label="Обратный отсчет до начала праздника">
+          <div class="time-box">
+            <strong id="hours">00</strong>
+            <span>часов</span>
+          </div>
+          <div class="time-box">
+            <strong id="minutes">00</strong>
+            <span>минут</span>
+          </div>
+          <div class="time-box">
+            <strong id="seconds">00</strong>
+            <span>секунд</span>
+          </div>
+        </div>
+
+        <p class="status" id="eventStatus">До встречи осталось совсем немного</p>
+
+        <div class="actions" aria-label="Действия">
+          <a class="primary-action" id="zoomLink" href="#" target="_blank" rel="noreferrer">Открыть Zoom</a>
+          <button class="secondary-action" id="copyZoomButton" type="button">Скопировать Zoom</button>
+        </div>
+
+        <div class="music-row">
+          <button class="sound-toggle" id="musicButton" type="button" aria-label="Выключить звук" title="Выключить звук">
+            <svg class="icon-sound-on" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 9v6h4l5 4V5L8 9H4z"></path>
+              <path d="M16 8.5a5 5 0 0 1 0 7"></path>
+              <path d="M18.5 6a8 8 0 0 1 0 12"></path>
+            </svg>
+            <svg class="icon-sound-off" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 9v6h4l5 4V5L8 9H4z"></path>
+              <path d="M19 9l-6 6"></path>
+              <path d="M13 9l6 6"></path>
+            </svg>
+          </button>
+          <audio id="partyAudio" src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Life%20of%20Riley.mp3" preload="auto" autoplay loop></audio>
+        </div>
+
+        <p class="note" id="copyFeedback" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
