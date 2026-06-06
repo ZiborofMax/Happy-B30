@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Юбилей 30 лет</title>
   <meta name="description" content="Приглашение на празднование юбилея 30 лет в Zoom.">
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -12,13 +13,14 @@
 
   <main class="page-shell">
     <section class="invite" aria-labelledby="pageTitle">
-      <div class="portrait-wrap">
-        <img
-          class="portrait"
-          src="./my-photo-web.jpg"
-          alt="Портрет именинника"
-        >
-      </div>
+        <div class="portrait-wrap">
+          <img
+            class="portrait"
+            src="./my-photo-page.jpg"
+            alt="Портрет именинника"
+            fetchpriority="high"
+          >
+        </div>
 
       <div class="content">
         <p class="kicker">Сегодня в 19:45 по Москве</p>
@@ -50,21 +52,7 @@
           <button class="secondary-action" id="copyZoomButton" type="button">Скопировать Zoom</button>
         </div>
 
-        <div class="music-row">
-          <button class="sound-toggle" id="musicButton" type="button" aria-label="Выключить звук" title="Выключить звук">
-            <svg class="icon-sound-on" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 9v6h4l5 4V5L8 9H4z"></path>
-              <path d="M16 8.5a5 5 0 0 1 0 7"></path>
-              <path d="M18.5 6a8 8 0 0 1 0 12"></path>
-            </svg>
-            <svg class="icon-sound-off" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 9v6h4l5 4V5L8 9H4z"></path>
-              <path d="M19 9l-6 6"></path>
-              <path d="M13 9l6 6"></path>
-            </svg>
-          </button>
-          <audio id="partyAudio" src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Life%20of%20Riley.mp3" preload="auto" autoplay loop></audio>
-        </div>
+        <audio id="partyAudio" src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Life%20of%20Riley.mp3" preload="auto" autoplay loop></audio>
 
         <p class="note" id="copyFeedback" role="status" aria-live="polite"></p>
       </div>

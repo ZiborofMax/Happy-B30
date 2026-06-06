@@ -58,14 +58,15 @@ a {
 
 .invite {
   display: grid;
-  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+  grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
   gap: clamp(28px, 5vw, 64px);
   align-items: center;
+  justify-content: center;
 }
 
 .portrait-wrap {
   min-height: 420px;
-  height: min(72vh, 680px);
+  height: min(68vh, 560px);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -78,6 +79,7 @@ a {
   display: block;
   object-fit: cover;
   object-position: center 42%;
+  image-rendering: auto;
 }
 
 .content {
@@ -215,53 +217,6 @@ h1 {
 .file-label:focus-within {
   outline: 3px solid rgba(255, 216, 74, 0.58);
   outline-offset: 3px;
-}
-
-.music-row {
-  display: flex;
-  margin-top: 14px;
-}
-
-.sound-toggle {
-  width: 52px;
-  height: 52px;
-  display: inline-grid;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--blue);
-  background: rgba(255, 248, 220, 0.78);
-  cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-}
-
-.sound-toggle:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(24, 119, 214, 0.16);
-}
-
-.sound-toggle:focus-visible {
-  outline: 3px solid rgba(255, 216, 74, 0.58);
-  outline-offset: 3px;
-}
-
-.sound-toggle svg {
-  width: 25px;
-  height: 25px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.sound-toggle .icon-sound-off,
-.sound-toggle.is-muted .icon-sound-on {
-  display: none;
-}
-
-.sound-toggle.is-muted .icon-sound-off {
-  display: block;
 }
 
 .note {

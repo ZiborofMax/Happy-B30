@@ -12,7 +12,6 @@ const zoomLink = document.getElementById("zoomLink");
 const copyZoomButton = document.getElementById("copyZoomButton");
 const copyFeedback = document.getElementById("copyFeedback");
 const audio = document.getElementById("partyAudio");
-const musicButton = document.getElementById("musicButton");
 const confettiCanvas = document.getElementById("confettiCanvas");
 const confettiContext = confettiCanvas.getContext("2d");
 
@@ -57,19 +56,18 @@ function setupZoom() {
   copyZoomButton.disabled = false;
 }
 
-function setSoundState(isPlaying) {
-  musicButton.classList.toggle("is-muted", !isPlaying);
-  musicButton.setAttribute("aria-label", isPlaying ? "Выключить звук" : "Включить звук");
-  musicButton.title = isPlaying ? "Выключить звук" : "Включить звук";
-}
-
 async function startMusic() {
+  if (!audio || !audio.paused) {
+    return;
+  }
+
   try {
     audio.muted = false;
+    audio.volume = 0.72;
     await audio.play();
-    setSoundState(true);
   } catch {
-    setSoundState(false);
+    document.addEventListener("pointerdown", startMusic, { once: true });
+    document.addEventListener("keydown", startMusic, { once: true });
   }
 }
 
@@ -177,28 +175,10 @@ zoomLink.addEventListener("click", (event) => {
   fireConfetti();
 });
 
-musicButton.addEventListener("click", async () => {
-  try {
-    if (audio.paused || audio.muted) {
-      audio.muted = false;
-      await audio.play();
-      setSoundState(true);
-      fireConfetti();
-    } else {
-      audio.pause();
-      setSoundState(false);
-    }
-  } catch {
-    copyFeedback.textContent = "Добавьте файл song.mp3 рядом со страницей.";
-    setSoundState(false);
-  }
-});
-
 window.addEventListener("resize", resizeConfettiCanvas);
 
 setupZoom();
 resizeConfettiCanvas();
 updateTimer();
-setSoundState(true);
 startMusic();
 setInterval(updateTimer, 1000);
