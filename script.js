@@ -159,6 +159,15 @@ function animateConfetti() {
   }
 }
 
+function launchIntroConfetti() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  setTimeout(fireConfetti, 520);
+  setTimeout(fireConfetti, 980);
+}
+
 copyZoomButton.addEventListener("click", () => {
   if (ZOOM_URL) {
     copyText(ZOOM_URL, "Zoom-ссылка скопирована");
@@ -181,4 +190,5 @@ setupZoom();
 resizeConfettiCanvas();
 updateTimer();
 startMusic();
+launchIntroConfetti();
 setInterval(updateTimer, 1000);
