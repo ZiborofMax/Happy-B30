@@ -71,6 +71,7 @@ a {
   overflow: hidden;
   box-shadow: var(--shadow);
   background: #f7df8a;
+  animation: riseIn 760ms ease-out both;
 }
 
 .portrait {
@@ -84,6 +85,7 @@ a {
 
 .content {
   min-width: 0;
+  animation: riseIn 760ms ease-out 110ms both;
 }
 
 .kicker {
@@ -102,6 +104,7 @@ h1 {
   font-size: clamp(3.2rem, 7.6vw, 6.8rem);
   line-height: 0.92;
   letter-spacing: 0;
+  overflow-wrap: normal;
 }
 
 .lead {
@@ -130,6 +133,15 @@ h1 {
   border-radius: 8px;
   background: rgba(255, 248, 220, 0.72);
   backdrop-filter: blur(8px);
+  animation: popIn 520ms ease-out both;
+}
+
+.time-box:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.time-box:nth-child(3) {
+  animation-delay: 160ms;
 }
 
 .time-box strong {
@@ -226,38 +238,94 @@ h1 {
   font-size: 0.95rem;
 }
 
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 820px) {
   .page-shell {
-    width: min(100% - 24px, 620px);
+    width: min(100% - 28px, 620px);
     align-items: start;
-    padding: 18px 0 28px;
+    padding: 14px 0 28px;
   }
 
   .invite {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 22px;
   }
 
   .portrait-wrap {
     min-height: 280px;
-    height: min(48vh, 430px);
+    height: min(48vh, 420px);
+  }
+
+  .kicker {
+    margin-bottom: 12px;
+    font-size: clamp(0.82rem, 3.7vw, 0.98rem);
+    line-height: 1.25;
+    letter-spacing: 0.11em;
   }
 
   h1 {
-    font-size: clamp(3rem, 15vw, 5.2rem);
+    max-width: 100%;
+    font-size: clamp(2.45rem, 10.8vw, 3.65rem);
+    line-height: 0.98;
+  }
+
+  .lead {
+    margin-top: 20px;
+    font-size: clamp(1rem, 4.2vw, 1.15rem);
+    line-height: 1.5;
   }
 
   .timer {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 26px;
   }
 
   .time-box {
-    min-height: 94px;
+    min-height: 82px;
+  }
+
+  .time-box strong {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+
+  .time-box span {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+
+  .status {
+    margin-top: 14px;
+    font-size: 0.98rem;
   }
 
   .actions {
     display: grid;
     grid-template-columns: 1fr;
+    margin-top: 22px;
   }
 
   .primary-action,
@@ -265,5 +333,26 @@ h1 {
   .music-button,
   .file-label {
     width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: clamp(2.25rem, 10.2vw, 3rem);
+  }
+
+  .portrait-wrap {
+    min-height: 250px;
+    height: min(44vh, 380px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
